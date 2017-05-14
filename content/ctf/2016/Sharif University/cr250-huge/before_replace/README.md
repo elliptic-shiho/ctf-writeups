@@ -1,0 +1,1 @@
+Challenge was replaced once. This is challenge file before replace.
