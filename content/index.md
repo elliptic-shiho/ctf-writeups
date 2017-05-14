@@ -1,8 +1,3 @@
-# eshiho's wiki
+# eshiho's ctf write-ups
 
-暗号とか数学に関する覚え書き
-
-```python=
-print "Hello, World!"
-```
-
+My CTF Writeups
