@@ -47,13 +47,11 @@ $$
 
 In addition, $d$ is satisfy $ed\equiv 1 \mod \phi(n) \iff ed - 1 = k\phi(n)$ where $k$ is some integer. so, we know $d\_p e\equiv 1\mod(p-1)$ and $d\_q e\equiv 1\mod (q-1)$. and we use $(1)$, we know $ed\_p - 1 = k\_{ep}(p-1)$ where $k\_{ep}$ is some integer.
 
-We guess $e = 65537$, and $k\_{ep}$ is sufficiently small(equivalently, we guess $k\_{ep}$ is able to bruteforce.). so, we bruteforce $k\_{ep}$.
-
-If we guessed correct $k\_{ep}$, we know $\displaystyle\frac{ed\_p - 1}{k\_{ep}}-1 = p$. furthermore, $p$ is a prime. thus we construct algorithm as follows:
+We guess $e = 65537$, and $k\_{ep}$ is sufficiently small($\iff$ $k\_{ep}$ is guessable.). If we guessed correct $k\_{ep}$, we know $\displaystyle\frac{ed\_p - 1}{k\_{ep}}+1 = p$. furthermore, $p$ is a prime. so we construct algorithm using this fact as follows:
 
 1. Guess $k\_{ep}$ (we use a count-up variable)
 2. If $ed\_p - 1\mod k\_{ep} \ne 0$, back to 1.
-3. Compute $\displaystyle p' = \frac{ed\_p - 1}{k\_{ep}}-1$
+3. Compute $\displaystyle p' = \frac{ed\_p - 1}{k\_{ep}}+1$
 4. If $p'$ is a prime, terminate. otherwise, back to 1.
 
 Finally, We implement this algorithm and factor $n$ and decrypt a flag.
