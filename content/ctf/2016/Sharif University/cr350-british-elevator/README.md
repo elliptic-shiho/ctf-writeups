@@ -15,7 +15,7 @@ flag = secret
 ```
 
 ## Writeup
-First, we check that curve order. and we know that is **Anomalous Elliptic Curve**. 
+First, we check order of given curve. And we know that is **Anomalous Elliptic Curve**. 
 
 Now, we can use **SSSA-Attack**. We apply it and got flag.
 

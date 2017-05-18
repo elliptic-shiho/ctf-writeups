@@ -4,7 +4,7 @@ RSA? (Crypto 2pts)
 Challenge file(s) is here: [rsa.zip](rsa.zip)
 
 ## Writeup
-We have RSA public key and encrypted flag. we know public key is here:
+We have RSA public key and encrypted flag. We know public key is here:
 
 $$
 \begin{aligned}
@@ -13,7 +13,7 @@ n &= 232927109786703804036412732700028847470600065680462900119184133754739340240
 \end{aligned}
 $$
 
-We noticed n is sufficiently small (only 314-bits long). so, we try factoring it.
+We noticed n is sufficiently small (only 314-bits long). So, we try factoring it.
 
 Factoring result is here:
 
@@ -26,7 +26,7 @@ n &= p\times q\times r
 \end{aligned}
 $$
 
-Wow, This is **Multi-Prime RSA**. but we know all private factor of $n$, we can compute $\phi(n) = \phi(p)\phi(q)\phi(r) = (p-1)(q-1)(r-1)$.
+Wow, This is **Multi-Prime RSA**. But we know all private factor of $n$, we can compute $\phi(n) = \phi(p)\phi(q)\phi(r) = (p-1)(q-1)(r-1)$.
 
 $$
 \begin{aligned}
@@ -37,16 +37,16 @@ $$
 
 BTW, In RSA cryptosystem needs to compute Private Exponent $d$. It is defined by $d\equiv e^{-1}\mod \phi(n)$.
 
-However, In this case $e$ is _not_ invertible (because $\gcd(e, \phi(n)) \ne 1$). so, we can't compute private exponent!
+However, In this case $e$ is _not_ invertible (because $\gcd(e, \phi(n)) \ne 1$). So, we can't compute private exponent!
 
-well, we use **Chinese-Remainder-Theorem** (CRT) to solve challenge. CRT statement is here:
+Well, we use **Chinese-Remainder-Theorem** (CRT) to solve challenge. CRT statement is here:
 
 _**Chinese Remainder Theorem**_ (with 3-equations)
 > Let $N\_1$, $N\_2$, and $N\_3$ be coprime, and let $x\_1$, $x\_2$, and $x\_3$ be integers. Then the system of equations
 > $$\begin{aligned} x &\equiv x\_1 \mod N\_1\\\\ x &\equiv x\_2 \mod N\_2\\\\x &\equiv x\_3 \mod N\_3\end{aligned}$$
 > has a unique solution for $x$ modulo $N\_1N\_2N\_3$.
 
-Let $m$ be a flag and let ciphertext $c$ be a RSA ciphertext of $m$. Indeed $c = m^3\mod n$. We know $n = pqr$ and $p$, $q$ and $r$ is coprime. and we can compute modular cubic root over finite field. 
+Let $m$ be a flag and let ciphertext $c$ be a RSA ciphertext of $m$. Indeed $c = m^3\mod n$. We know $n = pqr$ and $p$, $q$ and $r$ is coprime. And we can compute modular cubic root over finite field. 
 
 We use following procedure to solve this:
 

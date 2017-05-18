@@ -4,7 +4,7 @@ Alpha Complex 1 (Crypto 300pts)
 Challenge file(s) is here: [AlphaComplex1.zip](AlphaComplex1.zip)
 
 ## Writeup
-We have RSA-like cryptosystem. in fact, this is RSA over the **Gaussian Integer**.
+We have RSA-like cryptosystem. In fact, this is RSA over the **Gaussian Integer**.
 
 First, We construct a RSA over the Gaussian Integer. Gaussian Integer is subring of $\mathbb{C}$:
 
@@ -12,17 +12,17 @@ $$
 \mathbb{Z}[i] = \left\\{a + bi | a, b\in\mathbb{Z}\right\\}\quad\mathrm{where}\ i^2 = -1
 $$
 
-It is similar to Complex Field. indeed, some properties of complex number is similarly holds (norm, inverse calculation, ...). However, this is useless for cryptosystem. so, we use $\mathbb{Z} / n\mathbb{Z}$ as base ring!
+It is similar to Complex Field. Indeed, some properties of complex number are similarly holds (norm, inverse calculation, ...). However, this is useless for cryptosystem. So, we use $\mathbb{Z} / n\mathbb{Z}$ as base ring!
 
 $$
 \mathbb{Z}/n\mathbb{Z}[i]\left\\{a + bi | a, b\in\mathbb{Z}/n\mathbb{Z}\right\\}\quad\mathrm{where}\ i^2 = -1
 $$
 
-Let $(\mathbb{Z}/n\mathbb{Z}[i])^\*$ be a multiplicative group of $\mathbb{Z}/n\mathbb{Z}[i]$. Suppose $n = pq$ where $p$, $q$ is prime, we know $\\#(\mathbb{Z}/n\mathbb{Z}[i])^\* = (p^2 - 1)(q^2-1)$ and for all $x \in (\mathbb{Z}/n\mathbb{Z}[i])^\*$ holds $x^{\\#(\mathbb{Z}/n\mathbb{Z}[i])} = 1$. so we pick $e$ which has e is relatively prime to $\\#(\mathbb{Z}/n\mathbb{Z}[i])$, we can construct RSA-like cryptosystem using $d\equiv e^{-1} \mod \\#(\mathbb{Z}/n\mathbb{Z}[i])$.
+Let $(\mathbb{Z}/n\mathbb{Z}[i])^\*$ be a multiplicative group of $\mathbb{Z}/n\mathbb{Z}[i]$. Suppose $n = pq$ where $p$, $q$ is prime, we know $\\#(\mathbb{Z}/n\mathbb{Z}[i])^\* = (p^2 - 1)(q^2-1)$ and for all $x \in (\mathbb{Z}/n\mathbb{Z}[i])^\*$ holds $x^{\\#(\mathbb{Z}/n\mathbb{Z}[i])} = 1$. So we pick $e$ which has e is relatively prime to $\\#(\mathbb{Z}/n\mathbb{Z}[i])$, we can construct RSA-like cryptosystem using $d\equiv e^{-1} \mod \\#(\mathbb{Z}/n\mathbb{Z}[i])$.
 
 ----
 
-In this challenge, we know ciphertext for plaintext $m = x + yi$ with known $y$. The public key is generate randomly at every connection, but $e$ was same number at all public-key. we use broadcast-attack, maybe? - No, we don't use broadcast-attack. because $e$ is big($0\mathrm{x}\\!1337 = 4919$).
+In this challenge, we know ciphertext for plaintext $m = x + yi$ with known $y$. The public key generated randomly at every connection, but $e$ was same number at all public-key. We use broadcast attack, maybe? - No, we don't use broadcast attack. because $e$ is big($0\mathrm{x}\\!1337 = 4919$).
 
 We know ciphertext $c \equiv m^e \mod n$ is represented as follows:
 
@@ -34,13 +34,13 @@ c&\equiv m^e \mod n\\\\
 \end{aligned}
 $$
 
-We know $y$. Moreover $x'$ and $y'$ is able to represent by polynomial of $x$ and $y$ for each. so, Let $x$ be a indeterminate variable, we have **two** univariate polynomials over $\mathbb{Z}/n\mathbb{Z}$. we denote those polynomials by $x'(x)$ and $y'(x)$.
+We know $y$. Moreover $x'$ and $y'$ is able to represent by polynomial of $x$ and $y$ for each. So, Let $x$ is a indeterminate variable, we have **two** univariate polynomials over $\mathbb{Z}/n\mathbb{Z}$. We denote those polynomials by $x'(x)$ and $y'(x)$.
 
 Note: $x'$(or $y'$) is **different** to $x'(x)$(or $y'(x)$). $x'$ and $y'$ is ciphertext's component $c = x' + y'i$, but $x'(x)$ and $y'(x)$ is some polynomial for $x$.
 
 Then $P\_1(x) := x'(x) - x'$ and $P\_2(x) := y'(x) - y'$ has **same roots**.
 
-Finally, we compute $g(x) = \gcd(P\_1(x), P\_2(x))$ and compute roots of $g(x)$. From actual results, $g(x)$ is linear polynomial. so, we can compute roots of that easily, and that is flag.
+Finally, we compute $g(x) = \gcd(P\_1(x), P\_2(x))$ and compute roots of $g(x)$. From actual results, $g(x)$ is linear polynomial. So, we can compute roots of that easily, and that is flag.
 
 [solve.py](solve.py)
 

@@ -4,7 +4,7 @@ equation (Crypto 2pts)
 Challenge file(s) is here: [equation.zip](equation.zip)
 
 ## Writeup
-We have partially masked private key and encrypted flag. so we need to "OCR" image first.
+We have partially masked private key image and encrypted flag. So we need "OCR" the image first.
 
 OCR-ed private key is here:
 
@@ -27,7 +27,7 @@ We decode this masked key according to PEM structure then we can know three para
 
 For simple, we denote $d\mod (p-1)$ as $d\_p$, $d\mod (q-1)$ as $d\_q$ and $q^{-1}\mod p$ as $q\_{\mathrm{inv}}$.
 
-Well, we have a part of RSA-CRT parameters. they are satisfied following equation:
+Well, we have a part of RSA-CRT parameters. They are satisfied following equation:
 
 $$
 \begin{aligned}
@@ -45,9 +45,9 @@ d&\equiv d\_q\mod (q-1)\\\\
 \end{aligned}
 $$
 
-In addition, $d$ is satisfy $ed\equiv 1 \mod \phi(n) \iff ed - 1 = k\phi(n)$ where $k$ is some integer. so, we know $d\_p e\equiv 1\mod(p-1)$ and $d\_q e\equiv 1\mod (q-1)$. and we use $(1)$, we know $ed\_p - 1 = k\_{ep}(p-1)$ where $k\_{ep}$ is some integer.
+In addition, $d$ is satisfy $ed\equiv 1 \mod \phi(n) \iff ed - 1 = k\phi(n)$ where $k$ is some integer. So, we know $d\_p e\equiv 1\mod(p-1)$ and $d\_q e\equiv 1\mod (q-1)$. And we use $(1)$, we know $ed\_p - 1 = k\_{ep}(p-1)$ where $k\_{ep}$ is some integer.
 
-We guess $e = 65537$, and $k\_{ep}$ is sufficiently small($\iff$ $k\_{ep}$ is guessable.). If we guessed correct $k\_{ep}$, we know $\displaystyle\frac{ed\_p - 1}{k\_{ep}}+1 = p$. furthermore, $p$ is a prime. so we construct algorithm using this fact as follows:
+We guess $e = 65537$, and $k\_{ep}$ is sufficiently small($\iff$ $k\_{ep}$ is guessable.). If we guessed correct $k\_{ep}$, we know $\displaystyle\frac{ed\_p - 1}{k\_{ep}}+1 = p$. furthermore, $p$ is a prime. So we construct algorithm using this fact as follows:
 
 1. Guess $k\_{ep}$ (we use a count-up variable)
 2. If $ed\_p - 1\mod k\_{ep} \ne 0$, back to 1.

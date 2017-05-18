@@ -4,8 +4,7 @@ High-speed RSA Keygen (Crypto 150pts)
 Challenge file(s) is here: [RSA-Keygen.tar.gz](RSA-Keygen.tar.gz)
 
 ## Writeup
-This is problem to factor $n$ from prime generation trick.
-A generated prime $p$ has following structure.
+This is problem to factor $n$ from prime generation trick. A generated prime $p$ has following structure.
 
 $$
 p = k\pi\times 2^{400} + t

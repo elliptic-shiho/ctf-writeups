@@ -9,20 +9,20 @@ $$
 $$
 
 ## Writeup
-This is HMAC Hash using CRC64. We need to get HMAC Key from a hash/plaintext pair.
+This is HMAC using CRC64. We need to get HMAC Key from a hash/plaintext pair.
 
 ### Notation:
-* $P(x)$ : Generator polynomial of $GF(2^64)$
+* $P(x)$ : Generator polynomial of $GF(2^{64})$
 * $x$    : Generator of $GF(2^64)$
 * $\Ipad$ : Inner Padding
 * $\Opad$ : Outer Padding
 * $C$    : Some Constant
 
-All Operation is operation over GF(264). i.e. Addition means XOR operation.
+All Operation is operation over $GF(2^{64})$. i.e. Addition means XOR operation.
 
 ---
 
-$CRC\_{64}$ function is defined by $CRC _ {64}(m) = mx^{64} + C\mod P(X)$. HMAC using CRC64 is Defined as follows:
+$CRC\_{64}$ function is defined by $CRC _ {64}(m) = mx^{64} + C\mod P(X)$. The HMAC using CRC64 is defined as follows:
 
 $$
 \begin{aligned}
@@ -33,7 +33,7 @@ $$
 
 where $M$ is bit length of $m$.
 
-We need only $k$. so we transform that equation to solve for $k$.
+We need only $k$. So we transform that equation to solve for $k$.
 
 $$
 \begin{aligned}
@@ -53,7 +53,7 @@ k &= (x^{128} (\Opad + \Ipad x^M + m) + C (x^{64} + 1) + HMAC\\\_CRC\_{64}(k, m)
 \end{aligned}
 $$
 
-We got a equation for $k$. In addition, we can calculate right-side of equation. Therefore, We got $k$. Furthermore, we need only k to got flag. so, we got flag.
+We got equation for $k$. In addition, we can calculate right side of equation. Therefore, We got $k$. Furthermore, we need only k to got flag. So, we got flag.
 
 
 Flag: `BKPCTF{0xd2db2b8b9002841f}`
