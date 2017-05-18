@@ -19,7 +19,7 @@ $$
 \iff (\mathbb{Z}/n\mathbb{Z}[x])/(x^2 + 1)
 $$
 
-Suppose $n = pq$ where $p$, $q$ is prime, we know $\\#(\mathbb{Z}/n\mathbb{Z}[i])^\* = (p^2 - 1)(q^2-1)$ and for all $x \in (\mathbb{Z}/n\mathbb{Z}[i])^\*$ holds $x^{\\#(\mathbb{Z}/n\mathbb{Z}[i])} = 1$. so we pick $e$ which has e is relatively prime to $\\#(\mathbb{Z}/n\mathbb{Z}[i])$, we can construct RSA-like cryptosystem using $d\equiv e^{-1} \mod \\#(\mathbb{Z}/n\mathbb{Z}[i])$.
+Let $(\mathbb{Z}/n\mathbb{Z}[i])^\*$ be a multiplicative group of $\mathbb{Z}/n\mathbb{Z}[i]$. Suppose $n = pq$ where $p$, $q$ is prime, we know $\\#(\mathbb{Z}/n\mathbb{Z}[i])^\* = (p^2 - 1)(q^2-1)$ and for all $x \in (\mathbb{Z}/n\mathbb{Z}[i])^\*$ holds $x^{\\#(\mathbb{Z}/n\mathbb{Z}[i])} = 1$. so we pick $e$ which has e is relatively prime to $\\#(\mathbb{Z}/n\mathbb{Z}[i])$, we can construct RSA-like cryptosystem using $d\equiv e^{-1} \mod \\#(\mathbb{Z}/n\mathbb{Z}[i])$.
 
 ----
 
