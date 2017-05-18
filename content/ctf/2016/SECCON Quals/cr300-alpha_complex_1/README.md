@@ -6,16 +6,16 @@ Challenge file(s) is here: [AlphaComplex1.zip](AlphaComplex1.zip)
 ## Writeup
 We have RSA-like cryptosystem. in fact, this is RSA over the **Gaussian Integer**.
 
-First, We construct a RSA over the Gaussian Integer. Gaussian Integer is extended field of $\mathbb{Z}$:
+First, We construct a RSA over the Gaussian Integer. Gaussian Integer is subring of $\mathbb{C}$:
 
 $$
-\mathbb{Z}[i]\quad\mathrm{where}\ i^2 = -1
+\mathbb{Z}[i] = \left\\{a + bi | a, b\in\mathbb{Z}\right\\}\quad\mathrm{where}\ i^2 = -1
 $$
 
-It is similar to Complex Field. indeed, some properties of complex number is similarly holds (norm, inverse calculation, ...). However, this is useless for cryptosystem. so, we use $\mathbb{Z} / n\mathbb{Z}$ as base field!
+It is similar to Complex Field. indeed, some properties of complex number is similarly holds (norm, inverse calculation, ...). However, this is useless for cryptosystem. so, we use $\mathbb{Z} / n\mathbb{Z}$ as base ring!
 
 $$
-\mathbb{Z}/n\mathbb{Z}[i]\quad\mathrm{where}\ i^2 = -1\\\\
+\mathbb{Z}/n\mathbb{Z}[i]\left\\{a + bi | a, b\in\mathbb{Z}/n\mathbb{Z}\right\\}\quad\mathrm{where}\ i^2 = -1\\\\
 \iff (\mathbb{Z}/n\mathbb{Z}[x])/(x^2 + 1)
 $$
 
