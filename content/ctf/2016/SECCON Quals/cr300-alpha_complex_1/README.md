@@ -34,9 +34,13 @@ c&\equiv m^e \mod n\\\\
 \end{aligned}
 $$
 
-We know $y$. Moreover $x'$ and $y'$ is able to represent by polynomial of $x$ and $y$  for each. so, Let $x$ be a indeterminate variable, we have **two** univariate polynomials over $\mathbb{Z}/n\mathbb{Z}$. we denote those polynomials by $x'(x)$ and $y'(x)$. then $x'(x)$ and $y'(x)$ has **same roots**.
+We know $y$. Moreover $x'$ and $y'$ is able to represent by polynomial of $x$ and $y$ for each. so, Let $x$ be a indeterminate variable, we have **two** univariate polynomials over $\mathbb{Z}/n\mathbb{Z}$. we denote those polynomials by $x'(x)$ and $y'(x)$.
 
-Finally, we compute $g(x) = \gcd(x'(x), y'(x))$ and compute roots of $g(x)$. From actual results, $g(x)$ is linear polynomial. so, we can compute roots of that easily.
+Note: $x'$(or $y'$) is **different** to $x'(x)$(or $y'(x)$). $x'$ and $y'$ is ciphertext's component $c = x' + y'i$, but $x'(x)$ and $y'(x)$ is some polynomial for $x$.
+
+Then $P\_1(x) := x'(x) - x'$ and $P\_2(x) := y'(x) - y'$ has **same roots**.
+
+Finally, we compute $g(x) = \gcd(P\_1(x), P\_2(x))$ and compute roots of $g(x)$. From actual results, $g(x)$ is linear polynomial. so, we can compute roots of that easily, and that is flag.
 
 [solve.py](solve.py)
 
@@ -80,7 +84,7 @@ expr += ["y = %d" % y]
 expr += ["re = Mod(%s, n)" % d1]
 expr += ["im = Mod(%s, n)" % d2]
 expr += ["g = gcd(Mod(re-%d, n), Mod(im-%d, n))" % (c[0], c[1])]
-expr += ["liftall(-Vec(g / Vec(g)[1])[2])"]
+expr += ["liftall(-Vec(g / Vec(g)[1])[2])"] # use linearity of g(x).
 x = eval(parigp(expr))
 print repr(long_to_bytes(x))
 ```
