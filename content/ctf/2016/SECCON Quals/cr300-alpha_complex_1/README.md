@@ -15,8 +15,7 @@ $$
 It is similar to Complex Field. indeed, some properties of complex number is similarly holds (norm, inverse calculation, ...). However, this is useless for cryptosystem. so, we use $\mathbb{Z} / n\mathbb{Z}$ as base ring!
 
 $$
-\mathbb{Z}/n\mathbb{Z}[i]\left\\{a + bi | a, b\in\mathbb{Z}/n\mathbb{Z}\right\\}\quad\mathrm{where}\ i^2 = -1\\\\
-\iff (\mathbb{Z}/n\mathbb{Z}[x])/(x^2 + 1)
+\mathbb{Z}/n\mathbb{Z}[i]\left\\{a + bi | a, b\in\mathbb{Z}/n\mathbb{Z}\right\\}\quad\mathrm{where}\ i^2 = -1
 $$
 
 Let $(\mathbb{Z}/n\mathbb{Z}[i])^\*$ be a multiplicative group of $\mathbb{Z}/n\mathbb{Z}[i]$. Suppose $n = pq$ where $p$, $q$ is prime, we know $\\#(\mathbb{Z}/n\mathbb{Z}[i])^\* = (p^2 - 1)(q^2-1)$ and for all $x \in (\mathbb{Z}/n\mathbb{Z}[i])^\*$ holds $x^{\\#(\mathbb{Z}/n\mathbb{Z}[i])} = 1$. so we pick $e$ which has e is relatively prime to $\\#(\mathbb{Z}/n\mathbb{Z}[i])$, we can construct RSA-like cryptosystem using $d\equiv e^{-1} \mod \\#(\mathbb{Z}/n\mathbb{Z}[i])$.
