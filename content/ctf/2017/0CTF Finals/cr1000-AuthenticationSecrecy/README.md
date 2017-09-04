@@ -10,7 +10,7 @@ First, We need to known **Dual RSA**. Dual RSA public key has a Public Exponent 
 
 We searching paper and found [2]. So we implemented it. However, that paper is maybe not perfect...
 
-* Actually results does not following to paper computation. (Especially determinant of LLL-reduced Lattice determinant)
+* Actual results does not following to paper computation. (Especially determinant of LLL-reduced Lattice determinant)
 * We have a small question in this paragraph([2] p.10):
 
 > Moreover, the more integer equations corresponding to the vectors we choose, the less time calculating Gröbner basis takes. For the previous example, when we chose 50 of these integer equations, the calculation of Gröbner basis took 1933.664 seconds. However, when we chose all of them, it took only 16.700 s.
