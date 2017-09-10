@@ -6,7 +6,7 @@ Challenge file(s) is here: [gracias_5cf9b9e3f11e527b1b4cd99d67e19bee34d1aab4](gr
 ## Writeup
 This Challenge is Small Secret Exponent Attack against Multi-Prime RSA. 
 
-**Key-Generation Algorithm of Multi-Prime RSA** (in this challenge): Let $p$, $q$ and $r$ be prime, and let $n = pqr$ (Note : $\phi(n) = (p-1)(q-1)(r-1)$). 
+**Key-Generation Algorithm of Multi-Prime RSA** (in this challenge): Generate prime $p$, $q$ and $r$ and Compute $n = pqr$ (Note : $\phi(n) = (p-1)(q-1)(r-1)$). 
 Select $d\approx 2^{256}$ and Compute $e\equiv d^{-1}\pmod{\phi(n)}$. Public-Key is $(n, e)$ and Private-Key is $d$.
 
 In this generation algorithm, $d$ is quite small relatively to $n$. In fact, we know $\log\_2(d)/\log\_2(n) \approx 0.167$. In normal RSA, We know some attacks for small private key. Especially Wiener's Attack [1]\($d\lt n^{0.25}$) and Boneh-Durfee's Attack [2]\($d\lt n^{0.292}$) is most famous attacks. However, We didn't know any tool/attacks for Multi-Prime RSA.
