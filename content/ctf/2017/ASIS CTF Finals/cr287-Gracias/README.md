@@ -30,7 +30,7 @@ $$
 \therefore k(A + s) + 1\equiv 0\pmod e. \tag{1}
 $$
 
-where $k$ is a some integer.
+where $k$ is a integer.
 
 Recall Boneh-Durfee's Attack, That are use the equation like $x(A + y) - 1 \equiv 0\mod e$. It is very similar to our equation $(1)$!
 
