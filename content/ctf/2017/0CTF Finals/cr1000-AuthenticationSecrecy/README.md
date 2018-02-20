@@ -15,7 +15,19 @@ We searching paper and found [2]. So we implemented it. However, that paper is m
 
 > Moreover, the more integer equations corresponding to the vectors we choose, the less time calculating Gröbner basis takes. For the previous example, when we chose 50 of these integer equations, the calculation of Gröbner basis took 1933.664 seconds. However, when we chose all of them, it took only 16.700 s.
 
-Maybe, **all of them** means **all of got polynomials**. However, "The vector is basis of LLL-reduced lattice. therefore It satisfy Howgrave-graham's bound." is **not** always true. So we can't compute a solution using all of them! (Is this wrong point of paper?)
+~~Maybe, **all of them** means **all of got polynomials**. However, "The vector is basis of LLL-reduced lattice. therefore It satisfy Howgrave-graham's bound." is **not** always true. So we can't compute a solution using all of them! (Is this wrong point of paper?)~~
+
+---
+
+**Edit: 2018/02/20**
+In the previous paragraph, we can see following text:
+
+> we could finally obtain 91 integer equations which shared the desired small roots over the integers. 
+
+This text means **all of them** is all of integer polynomials. so above my opinion was wrong. sorry ;;
+
+---
+
 
 Therefore, we select maybe shorter vectors by heuristic. Indeed, we use a 19 vectors from the second one.
 
