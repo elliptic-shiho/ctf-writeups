@@ -27,22 +27,9 @@ Since `To decrypt it you need 5 coefficients` and we assumed ordinary SSSS, we g
 
 Now, we have only 3 shares ($\Leftrightarrow$ 3 graph points of $f(x)$). so we can't use Lagrange Interpolation. but we have an useful tool - It's LLL.
 
-Let consider a lattice $\boldsymbol{M}$ spanned by $(\boldsymbol{m}\_ 1, \boldsymbol{m}\_ 2, \boldsymbol{m}\_ 3, \boldsymbol{m}\_ 4, \boldsymbol{m}\_ 5, \boldsymbol{m}\_ 6)$ where 
+Let consider a lattice $\boldsymbol{M}$ spanned by $\mathcal{M}$, defined as follows:
 $$
-\begin{aligned}
-\boldsymbol{m}\_ 1 &= (1, 0, 0, 0, 0, 0, &Kx\_1^4,   &&Kx\_2^4,   &&Kx\_3^4),\cr
-\boldsymbol{m}\_ 2 &= (0, 1, 0, 0, 0, 0, &Kx\_1^3,   &&Kx\_2^3,   &&Kx\_3^3),\cr
-\boldsymbol{m}\_ 3 &= (0, 0, 1, 0, 0, 0, &Kx\_1^2,   &&Kx\_2^2,   &&Kx\_3^2),\cr
-\boldsymbol{m}\_ 4 &= (0, 0, 0, 1, 0, 0, &Kx\_1,     &&Kx\_2,     &&Kx\_3),\cr
-\boldsymbol{m}\_ 5 &= (0, 0, 0, 0, 1, 0, &K,         &&K,         &&K),\cr
-\boldsymbol{m}\_ 6 &= (0, 0, 0, 0, 0, 1, &-Kf(x\_1), &&-Kf(x\_2), &&-Kf(x\_3)),\cr
-\end{aligned}
-$$
-and $K\in\mathbb{Z}$ is some large constant (for weight to right 3 elements).
-
-Note: the basis matrix $\mathcal{M}$ of lattice $\boldsymbol{M}$ can represented by following matrix:
-$$
-\mathcal{M} = \begin{pmatrix}
+\mathcal{M} := \begin{pmatrix}
 1 & 0 & 0 & 0 & 0 & 0 & Kx\_1^4 & Kx\_2^4 & Kx\_3^4\cr
 0 & 1 & 0 & 0 & 0 & 0 & Kx\_1^3 & Kx\_2^3 & Kx\_3^3\cr
 0 & 0 & 1 & 0 & 0 & 0 & Kx\_1^2 & Kx\_2^2 & Kx\_3^2\cr
@@ -51,12 +38,13 @@ $$
 0 & 0 & 0 & 0 & 0 & 1 & -Kf(x\_1) & -Kf(x\_2) & -Kf(x\_3)\cr
 \end{pmatrix}
 $$
+where $K\in\mathbb{Z}$ is some large constant (for weight to right 3 elements).
 
 In this lattice, $(A, B, C, D, E, 1, 0, 0, 0) = (A, B, C, D, E, 1)\mathcal{M}$ is a vector of $\boldsymbol{M}$. Actually, A vector on $\boldsymbol{M}$ which is last three elements zero, it can transform to first one. so we called those vectors are "solution vector". 
 
 If $K$ is sufficiently large, norm of a solution vector is smaller than other non-solution vector's norm. therefore we can get it by solving approximate SVP using LLL! (Indeed, we convert the given shares to Rational number and did LLL over the Rational Field)
 
-However, The problem has used Real number. So we can't get strict solution vector since computational precision problem... umm...
+However, The challenge has used Real number. So we can't get strict solution vector since computational precision problem... umm...
 
 [solve.sage](./solve.sage)
 
