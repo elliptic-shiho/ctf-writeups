@@ -13,3 +13,5 @@
   * [0CTF Finals](ctf/2017/0CTF Finals/README.md)
   * [TokyoWesterns CTF 3rd](ctf/2017/TokyoWesterns CTF 3rd/README.md)
   * [ASIS CTF Finals](ctf/2017/ASIS CTF Finals/README.md)
+  * # 2019
+  * [Google CTF Quals](ctf/2019/Google CTF/README.md)
