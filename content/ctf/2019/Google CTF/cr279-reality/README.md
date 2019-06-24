@@ -23,7 +23,7 @@ coefficients 3: 4.25511161595781201278956326512652848976105073450857257427727838
 
 We guess this is **Shamir's Secret Sharing Scheme (SSSS)** from challenge description and given *coefficients*. so this *coefficients* aren't actual (polynomial) coefficient, these are shares of SSSS over Real Number (k-th coefficient = k-th share). namely, we have $(x_1, f(x_1))$, $(x_2, f(x_2))$, and $(x_3, f(x_3))$ where $x_1, x_2, x_3\in\mathbb{R}$ and some function $f(x)$.
 
-Since `To decrypt it you need 5 coefficients` and we assumed ordinary SSSS, we guess reconstruct the function $f(x)$ using Lagrange Interpolation if we have 5 shares. Further, we guess It's coefficients are integer, because we couldn't guess the way of decrypt the *Encrypted Flag* if those are real number. consequently, we assumed $f(x)$ can represented by $Ax^4 + Bx^3 + Cx^2 + Dx + E$ where $A, B, C, D\in\mathbb{Z}$. 
+Since `To decrypt it you need 5 coefficients` and we assumed ordinary SSSS, we guess reconstruct the function $f(x)$ using Lagrange Interpolation if we have 5 shares. Further, we guess It's coefficients are integer, because we couldn't guess the way of decrypt the *Encrypted Flag* if those are real number. consequently, we assumed $f(x)$ can represented by $Ax^4 + Bx^3 + Cx^2 + Dx + E$ where $A, B, C, D, E\in\mathbb{Z}$. 
 
 Now, we have only 3 shares ($\Leftrightarrow$ 3 graph points of $f(x)$). so we can't use Lagrange Interpolation. but we have an useful tool - It's LLL.
 
